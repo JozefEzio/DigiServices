@@ -1,0 +1,61 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "title": "Problème de connexion VPN",
+      "description": "Impossible de se connecter au VPN de l'entreprise depuis ce matin",
+      "category": "Technique",
+      "priority": "Haute",
+      "status": "En cours",
+      "clientName": "Ahmed Benali",
+      "clientEmail": "ahmed.benali@digiservices.ma",
+      "createdAt": "2025-12-14T12:00:00.000Z"
+    },
+    {
+      "id": "2", 
+      "title": "Écran cassé sur portable",
+      "description": "L'écran de mon ordinateur portable est fissuré suite à une chute",
+      "category": "Matériel",
+      "priority": "Moyenne",
+      "status": "Nouveau",
+      "clientName": "Fatima Alaoui",
+      "clientEmail": "fatima.alaoui@digiservices.ma",
+      "createdAt": "2025-12-16T12:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "Réinitialisation mot de passe",
+      "description": "J'ai oublié mon mot de passe et je n'arrive plus à accéder à mon compte",
+      "category": "Compte",
+      "priority": "Haute",
+      "status": "Résolu",
+      "clientName": "Youssef Mansouri",
+      "clientEmail": "youssef.mansouri@digiservices.ma",
+      "createdAt": "2025-12-12T12:00:00.000Z",
+      "resolvedAt": "2025-12-13T12:00:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "Erreur de facturation",
+      "description": "Ma dernière facture contient des montants incorrects",
+      "category": "Facturation",
+      "priority": "Urgente",
+      "status": "Nouveau",
+      "clientName": "Samira Idrissi",
+      "clientEmail": "samira.idrissi@digiservices.ma",
+      "createdAt": "2025-12-17T06:00:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "Installation logiciel",
+      "description": "Besoin d'installer Adobe Creative Suite sur mon poste",
+      "category": "Technique",
+      "priority": "Basse",
+      "status": "Fermé",
+      "clientName": "Karim El Amrani",
+      "clientEmail": "karim.elamrani@digiservices.ma",
+      "createdAt": "2025-12-10T12:00:00.000Z",
+      "resolvedAt": "2025-12-11T12:00:00.000Z"
+    }
+  ]
+}
