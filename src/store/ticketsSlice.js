@@ -2,13 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://localhost:3001",
 });
 
 const ticketsSlice = createSlice({
   name: "tickets",
   initialState: {
     tickets: [],
+    filters: {
+      status: 'all',
+      priority: 'all',
+      category: 'all',
+      search: ''
+    }
   },
   reducers: {
     setTickets: (state, action) => {
@@ -31,8 +37,29 @@ const ticketsSlice = createSlice({
         state.tickets[index] = action.payload;
       }
     },
+
+    setFilters: (state, action) => {
+      state.filters = { ...state.filters, ...action.payload };
+    },
+
+    clearFilters: (state) => {
+      state.filters = {
+        status: 'all',
+        priority: 'all',
+        category: 'all',
+        search: ''
+      };
+    }
   },
 });
 
-export const { setTickets, addTicket, deleteTicket } = ticketsSlice.actions;
+export const {
+  setTickets,
+  addTicket,
+  deleteTicket,
+  updateTicket,
+  setFilters,
+  clearFilters
+} = ticketsSlice.actions;
+
 export default ticketsSlice.reducer;
