@@ -19,9 +19,6 @@ const Navigation = () => {
     setIsOpen(false);
   }, [location.pathname]);
   
-  if (location.pathname === '/') {
-    return null;
-  }
 
   const isActive = (path) => {
     if (path === '/dashboard') {
@@ -56,7 +53,7 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link 
-              to="/dashboard" 
+              to="/" 
               className="flex items-center space-x-2 group transition-transform hover:scale-105"
             >
               <div className="relative">
