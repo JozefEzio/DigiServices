@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Edit, Trash2, Clock, Calendar, Mail, User, AlertCircle } from 'lucide-react';
-import { deleteTicket } from '../../store/ticketsSlice';
+import { addTicket, api, deleteTicket } from '../../store/ticketsSlice';
 
 export default function Ticket() {
   const { id } = useParams();
@@ -10,15 +10,25 @@ export default function Ticket() {
   const dispatch = useDispatch();
 
   const ticket = useSelector((state) =>
-    state.tickets.tickets.find((t) => t.id === id)
+    state.tickets.tickets.find((t) => Number(t.id) === Number(id))
   );
 
   const [elapsedTime, setElapsedTime] = useState('');
   const [isOverdue, setIsOverdue] = useState(false);
 
   useEffect(() => {
+    if (!ticket) {
+      api.get(`/tickets/${Number(id)}`)
+        .then((res) => {
+          dispatch(addTicket(res.data));
+        })
+        .catch(() => {
+          navigate('/tickets');
+        })
+    } 
+  }, [ticket, Number(id), dispatch, navigate]);
+  useEffect(() => {
     if (!ticket) return;
-
     const updateElapsedTime = () => {
       const now = new Date();
       const created = new Date(ticket.createdAt);
@@ -41,7 +51,7 @@ export default function Ticket() {
     };
 
     updateElapsedTime();
-    const interval = setInterval(updateElapsedTime, 60000); 
+    const interval = setInterval(updateElapsedTime, 60000);
     return () => clearInterval(interval);
   }, [ticket]);
 
@@ -62,13 +72,19 @@ export default function Ticket() {
       </div>
     );
   }
+  const handleDelete = async () => {
+    if (!window.confirm('Êtes-vous sûr de vouloir supprimer ce ticket ?')) return;
 
-  const handleDelete = () => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce ticket ?')) {
+    try {
+      await api.delete(`/tickets/${id}`);
       dispatch(deleteTicket(id));
       navigate('/tickets');
+    } catch (error) {
+      console.error(error);
+      alert("Erreur lors de la suppression du ticket");
     }
   };
+
 
   const priorityColors = {
     Basse: 'bg-green-100 text-green-800',
@@ -99,7 +115,6 @@ export default function Ticket() {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="bg-white rounded-xl shadow-md p-8 mb-6">
             <div className="flex justify-between items-start mb-6">
               <div className="flex-1">
@@ -144,7 +159,6 @@ export default function Ticket() {
               </div>
             </div>
 
-            {/* Informations temporelles */}
             <div className="grid md:grid-cols-3 gap-4 pt-6 border-t border-gray-200">
               <div className="flex items-center space-x-3">
                 <div className="bg-blue-100 p-2 rounded-lg">
@@ -180,13 +194,11 @@ export default function Ticket() {
             </div>
           </div>
 
-          {/* Description */}
           <div className="bg-white rounded-xl shadow-md p-8 mb-6">
             <h3 className="mb-4">Description</h3>
             <p className="text-gray-700 whitespace-pre-wrap">{ticket.description}</p>
           </div>
 
-          {/* Informations client */}
           <div className="bg-white rounded-xl shadow-md p-8">
             <h3 className="mb-6">Informations Client</h3>
             <div className="grid md:grid-cols-2 gap-6">

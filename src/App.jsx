@@ -7,6 +7,7 @@ import Ticket from './components/pages/Ticket';
 import AjouterTicket from './components/pages/AjouterTicket';
 import ModifierTicket from './components/pages/ModifierTicket';
 import Navigation from './components/Navigation';
+import Dashboard from './components/pages/Dashboard';
 
 const App = () => {
   return (
@@ -14,10 +15,11 @@ const App = () => {
       <Navigation />
         <Routes>
           <Route path='/' element={<LandingPage />} />
+          <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/tickets' element={<ListTickets />} />
           <Route path='/tickets/:id' element={<Ticket />} />
           <Route path='/tickets/ajouter' element={<AjouterTicket />} />
-          <Route path='/tickets/modifier/:id ' element={<ModifierTicket />} />
+          <Route path='/tickets/modifier/:id' element={<ModifierTicket />} />
         </Routes>
       
     </>

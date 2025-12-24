@@ -1,26 +1,16 @@
 {
   "tickets": [
     {
-      "id": "1",
-      "title": "Problème de connexion VPN",
-      "description": "Impossible de se connecter au VPN de l'entreprise depuis ce matin",
-      "category": "Technique",
-      "priority": "Haute",
-      "status": "En cours",
-      "clientName": "Ahmed Benali",
-      "clientEmail": "ahmed.benali@digiservices.ma",
-      "createdAt": "2025-12-14T12:00:00.000Z"
-    },
-    {
-      "id": "2", 
+      "id": "2",
       "title": "Écran cassé sur portable",
       "description": "L'écran de mon ordinateur portable est fissuré suite à une chute",
       "category": "Matériel",
       "priority": "Moyenne",
       "status": "Nouveau",
-      "clientName": "Fatima Alaoui",
-      "clientEmail": "fatima.alaoui@digiservices.ma",
-      "createdAt": "2025-12-16T12:00:00.000Z"
+      "clientName": "Youssef Zouilige",
+      "clientEmail": "Youssef@gmail.com",
+      "createdAt": "2025-12-16T12:00:00.000Z",
+      "updatedAt": "2025-12-24T11:04:38.134Z"
     },
     {
       "id": "3",
@@ -56,6 +46,18 @@
       "clientEmail": "karim.elamrani@digiservices.ma",
       "createdAt": "2025-12-10T12:00:00.000Z",
       "resolvedAt": "2025-12-11T12:00:00.000Z"
+    },
+    {
+      "id": "TKT-1766573181010",
+      "title": "Problem de Wifi",
+      "description": "j'ai un problem dans mon wifi",
+      "category": "Technique",
+      "priority": "Urgente",
+      "status": "Nouveau",
+      "clientName": "Hamza Fajri",
+      "clientEmail": "hamza@gmail.com",
+      "createdAt": "2025-12-24T10:46:21.010Z",
+      "resolvedAt": null
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Search, Filter, AlertCircle, Eye, Pencil } from 'lucide-react';
+import { Search, Filter, AlertCircle, Eye, Pencil, Plus } from 'lucide-react';
 import { api, setTickets } from '../../store/ticketsSlice';
 
 export default function ListTickets() {
@@ -83,18 +83,22 @@ export default function ListTickets() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      
+
 
       <div className="container mx-auto px-3 py-8">
-        <div className="mb-8">
-          <h1 className="mb-2">Liste des Tickets</h1>
-          <p className="text-gray-600">
-            Total : {filteredTickets.length} ticket
-            {filteredTickets.length > 1 ? 's' : ''}
-          </p>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="mb-2">Liste des Tickets</h1>
+            <p className="text-gray-600">
+              Total : {filteredTickets.length} ticket
+              {filteredTickets.length > 1 ? 's' : ''}
+            </p>
+          </div>
+          <div>
+            <Link to={'/tickets/ajouter'} className='px-3 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-2.5 rounded-md flex items-center justify-center gap-2 transition'><Plus/> Ajouter Ticket</Link>
+          </div>
         </div>
 
-        {/* Filters */}
         <div className="bg-white rounded-xl p-6 shadow-md mb-6">
           <div className="flex items-center mb-4">
             <Filter className="mr-2 text-gray-600" size={20} />
@@ -102,7 +106,6 @@ export default function ListTickets() {
           </div>
 
           <div className="grid md:grid-cols-4 gap-4">
-            {/* Search */}
             <div className="relative">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -117,7 +120,6 @@ export default function ListTickets() {
               />
             </div>
 
-            {/* Category */}
             <select
               value={filterCategory}
               onChange={(e) => setFilterCategory(e.target.value)}
@@ -130,7 +132,6 @@ export default function ListTickets() {
               <option value="Facturation">Facturation</option>
             </select>
 
-            {/* Priority */}
             <select
               value={filterPriority}
               onChange={(e) => setFilterPriority(e.target.value)}
@@ -143,7 +144,6 @@ export default function ListTickets() {
               <option value="Urgente">Urgente</option>
             </select>
 
-            {/* Status */}
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
@@ -158,7 +158,6 @@ export default function ListTickets() {
           </div>
         </div>
 
-        {/* Table */}
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
           {filteredTickets.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
@@ -169,7 +168,6 @@ export default function ListTickets() {
               <table className="min-w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-3 py-3 text-left">ID</th>
                     <th className="px-3 py-3 text-left">Titre</th>
                     <th className="px-3 py-3 text-left">Client</th>
                     <th className="px-3 py-3 text-left">Catégorie</th>
@@ -183,7 +181,6 @@ export default function ListTickets() {
                 <tbody>
                   {filteredTickets.map((ticket) => (
                     <tr key={ticket.id} className="border-t hover:bg-gray-50">
-                      <td className="px-3 py-3">#{ticket.id}</td>
 
                       <td className="px-3 py-3">
                         <div className="flex items-center">
@@ -227,13 +224,13 @@ export default function ListTickets() {
                           to={`/tickets/${ticket.id}`}
                           className=" text-blue-600 hover:text-blue-700"
                         >
-                          <Eye width={'20'} className=" text-blue-600"/>
+                          <Eye width={'20'} className=" text-blue-600" />
                         </Link>
                         <Link
                           to={`/tickets/modifier/${ticket.id}`}
                           className=" text-green-600 hover:text-green-700"
                         >
-                          <Pencil className="text-green-600"/>
+                          <Pencil className="text-green-600" />
                         </Link>
                       </td>
                     </tr>
