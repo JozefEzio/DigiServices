@@ -36,7 +36,6 @@ export default function LandingPage() {
           </Link>
         </div>
 
-        {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           <div className="bg-white p-6 rounded-xl shadow-md">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mb-4">
@@ -79,7 +78,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Project Description */}
         <div className="bg-white rounded-2xl shadow-xl p-12 mb-16">
           <h2 className="text-center mb-8 text-blue-900">À Propos du Projet</h2>
           <div className="max-w-4xl mx-auto space-y-6 text-gray-700">
@@ -102,7 +100,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* Team Section */}
         <div className="mb-16">
           <h2 className="text-center mb-12 text-blue-900">Notre Équipe</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">

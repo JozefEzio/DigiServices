@@ -109,7 +109,6 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div 
         className={`
           md:hidden overflow-hidden transition-all duration-300 ease-in-out

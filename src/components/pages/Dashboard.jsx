@@ -43,7 +43,6 @@ const Dashboard = () => {
           <p className="text-lg text-slate-600">Vue d'ensemble des tickets et statistiques en temps réel</p>
         </div>
 
-        {/* Stat Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard icon={FileText} value={stats.totalTickets} label="Total Tickets" color="primary" />
           <StatCard icon={FolderOpen} value={stats.openTickets} label="Tickets Ouverts" color="warning" />
@@ -51,7 +50,6 @@ const Dashboard = () => {
           <StatCard icon={CheckCircle2} value={`${stats.resolutionRate}%`} label="Taux de Résolution" color="success" />
         </div>
 
-        {/* More Stats */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="bg-white shadow-lg rounded-xl p-6 flex flex-col">
             <div className="flex items-center space-x-3 mb-4">
@@ -88,7 +86,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Overdue Alert */}
         {stats.overdueTickets > 0 && (
           <div className="bg-red-50 border-2 border-red-200 rounded-xl p-6 flex items-start space-x-4">
             <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0" />
